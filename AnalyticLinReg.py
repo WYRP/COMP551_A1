@@ -8,6 +8,8 @@ class AnalyticLinReg:
     This is the constructor for the class AnalyticLinReg
     """
     def __init__(self, X, y):
+        self.X = X
+        self.y = y
         self.theta1 = 0
         self.theta0 = 0
 
@@ -23,23 +25,17 @@ class AnalyticLinReg:
     :return: None
     '''
 
-    def fit(self, X, y):
-        self.X = X
-        self.y = y
-        self.mean_X = statistics.mean(X)
-        self.mean_y = statistics.mean(y)
+    def fit(self):
+        self.mean_X = statistics.mean(self.X)
+        self.mean_y = statistics.mean(self.y)
         numer = 0
         denom = 0
-        # Summing up the numerator and denominator
-        for i in range(len(X)):
-            numer += (X[i] - self.mean_X) * (y[i] - self.mean_y)
-            denom += ((X[i] - self.mean_X) ** 2)
-        # Checking if denominator is zero
+        for i in range(len(self.X)):
+            numer += (self.X[i] - self.mean_X) * (self.y[i] - self.mean_y)
+            denom += ((self.X[i] - self.mean_X) ** 2)
         if denom == 0:
             raise ValueError("Denominator is zero")
-        # Calculating the slope
         self.theta1 = numer / denom
-        # Calculating the intercept
         self.theta0 = self.mean_y - self.theta1 * self.mean_X
 
     '''

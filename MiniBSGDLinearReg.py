@@ -1,5 +1,5 @@
 import statistics
-
+import random
 
 class MiniBSGDLinearReg:
     def __init__(self, X, y, learning_rate, batch_size, num_epochs):
@@ -30,7 +30,9 @@ class MiniBSGDLinearReg:
         theta1 = 0
 
         for epoch in range(self.num_epochs):
-            self.X, self.y = shuffle(self.X, self.y)
+            combined = list(zip(self.X, self.y))
+            random.shuffle(combined)
+            self.X[:], self.y[:] = zip(*combined)
 
             for batch_start in range(0, len(self.X), self.batch_size):
                 if batch_start + self.batch_size > len(self.X):
@@ -50,9 +52,5 @@ class MiniBSGDLinearReg:
         return self.theta0 + self.theta1 * X
 
     def fit(self):
-        # Initialize model parameters
-        initial_theta0 = 0
-        initial_theta1 = 0
-
         # Call minibatchSGD to update the model parameters
-        self.theta0, self.theta1 = self.minibatchSGD(initial_theta0, initial_theta1)
+        self.theta0, self.theta1 = self.minibatchSGD()
