@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JupyterPersistentConnectionParameters">
+    <option name="moduleParameters">
+      <map>
+        <entry key="$PROJECT_DIR$/.idea/COMP551_A1.iml">
+          <value>
+            <JupyterConnectionParameters>
+              <option name="argv" value="notebook --no-browser --port9090" />
+              <option name="managed" value="true" />
+              <option name="sdkName" value="Python 3.9" />
+              <option name="environmentVariables">
+                <map>
+                  <entry name="data_val" value=" 2" />
+                </map>
+              </option>
+            </JupyterConnectionParameters>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
